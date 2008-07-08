@@ -4,6 +4,13 @@
   <%= javascript_include_tag :defaults %>
   <%= stylesheet_link_tag "blogs_alt" %>
   <%= calendar_date_select_includes %>
+  <%= stylesheet_link_tag "SyntaxHighlighter" %>
+  <%= javascript_include_tag "syntax_highlighter/shCore.js" %>
+  <%= javascript_include_tag "syntax_highlighter/shBrushRuby.js" %>
+  <%= javascript_include_tag "syntax_highlighter/shBrushXml.js" %>
+  <%= javascript_include_tag "syntax_highlighter/shBrushCss.js" %>
+  <%= javascript_include_tag "syntax_highlighter/shBrushJScript.js" %>
+  <%= javascript_include_tag "syntax_highlighter/shBrushJava.js" %>
 </head>
 <body>
 
@@ -19,5 +26,9 @@
 </div><!-- contentc -->
 
 </body>
+<script language="javascript">
+dp.SyntaxHighlighter.ClipboardSwf = '/javascript/syntax_highlighter/clipboard.swf';
+dp.SyntaxHighlighter.HighlightAll('code');
+</script>
 </html>
 
