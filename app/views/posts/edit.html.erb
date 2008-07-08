@@ -2,6 +2,7 @@
 
 <% form_for(@post) do |f| %>
   <%= f.error_messages %>
+  <%= f.hidden_field :blog_id %>
 
   <p>
     <%= f.label :title %><br />
@@ -9,11 +10,7 @@
   </p>
   <p>
     <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.label :blog_id %><br />
-    <%= f.text_field :blog_id %>
+    <%= f.text_area :body, :value => (@post.content ? @post.content.source : "") %>
   </p>
   <p>
     <%= f.label :published_at %><br />
