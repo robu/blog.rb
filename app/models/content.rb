@@ -10,6 +10,7 @@ class Content < ActiveRecord::Base
   def before_validation
     if self.source
       self.target = RedCloth.new(self.source).to_html
+      self.source_type = "redcloth"
     end
   end
 end
