@@ -1,0 +1,4 @@
+<%= render :partial => "blogs/post", :locals => { :post => @post } %>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', blog_path(@post.blog) %>

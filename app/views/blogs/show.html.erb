@@ -1,0 +1,13 @@
+<% content_for :title do %><%=h @blog.name %><% end %>
+<% content_for :header do -%>
+<div id="blog_name"><h1><%=h @blog.name %></h1></div>
+<div id="blog_description"><h2><%=h @blog.description %></h2></div>
+<% end -%>
+
+
+<%= link_to 'Edit', edit_blog_path(@blog) %> |
+<%= link_to 'Back', blogs_path %>
+<%= link_to 'Create Post', new_post_path(:blog => @blog) %>
+
+<%= render :partial => "post", :collection => @blog.published_posts %>
+
