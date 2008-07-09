@@ -13,4 +13,11 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
   
+  def logged_in?
+    !! session[:user_id]
+  end
+  
+  def logged_in_user
+    logged_in? ? User.find(session[:user_id]) : nil
+  end
 end

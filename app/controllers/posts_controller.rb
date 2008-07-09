@@ -46,6 +46,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.blog = Blog.find(params[:post][:blog_id])
+    return unless @post.blog.users.include? logged_in_user
 
     respond_to do |format|
       if @post.save
@@ -63,6 +64,7 @@ class PostsController < ApplicationController
   # PUT /posts/1.xml
   def update
     @post = Post.find(params[:id])
+    return unless @post.blog.users.include? logged_in_user
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
@@ -80,6 +82,7 @@ class PostsController < ApplicationController
   # DELETE /posts/1.xml
   def destroy
     @post = Post.find(params[:id])
+    return unless @post.blog.users.include? logged_in_user
     @post.destroy
 
     respond_to do |format|
