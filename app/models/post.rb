@@ -10,6 +10,8 @@ class Post < ActiveRecord::Base
   
   validates_presence_of :blog_id
   
+  attr_protected :blog_id
+  
   named_scope :published, :conditions => "published_at is not null", :order => "published_at desc"
   named_scope :unpublished, :conditions => "published_at is null", :order => "updated_at desc"
   

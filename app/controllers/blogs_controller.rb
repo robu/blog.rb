@@ -2,7 +2,11 @@ class BlogsController < ApplicationController
   # GET /blogs
   # GET /blogs.xml
   def index
-    @blogs = Blog.find(:all)
+    if params[:user] && (user=User.find(params[:user]))
+      @blogs = user.blogs
+    else
+      @blogs = Blog.all
+    end
 
     respond_to do |format|
       format.html # index.html.erb

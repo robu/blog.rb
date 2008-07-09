@@ -1,0 +1,30 @@
+<h1>Sessions#login</h1>
+
+<% form_for(@user, :url => {:action => :create}) do |f| -%>
+<% unless @user.errors.empty? -%>
+<div class="error">
+<% if @user.errors.count == 1 -%>
+Error: <%=h @user.errors.full_messages.first%>
+<% else -%>
+Errors:<br/>
+<ul>
+<% @user.errors.each_full do |msg| %><li><%=h msg%></li><% end %>
+</ul>
+<% end -%>
+<%= debug params %>
+</div>
+<% end -%>
+
+<p>
+  <b><%= f.label :username %></b><br/>
+  <%= f.text_field :username %>
+</p>
+<p>
+  <b><%= f.label :password %></b><br/>
+  <%= f.password_field :password %>
+</p>
+
+<p>
+  <%= f.submit "Login &raquo;" %>
+</p>
+<% end -%>

@@ -1,5 +1,6 @@
 class Blog < ActiveRecord::Base
   has_many :posts
+  has_and_belongs_to_many :users, :join_table => "users_blogs"
 
   validates_format_of :path_name, :with => /\A[abcdefghijklmnopqrstuvwxyz0123456789_\-\.]+\Z/
   validates_uniqueness_of :path_name

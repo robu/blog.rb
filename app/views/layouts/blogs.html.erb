@@ -11,12 +11,23 @@
   <%= javascript_include_tag "syntax_highlighter/shBrushCss.js" %>
   <%= javascript_include_tag "syntax_highlighter/shBrushJScript.js" %>
   <%= javascript_include_tag "syntax_highlighter/shBrushJava.js" %>
+  
+  <style>
+    #header {
+      background-image: url(/images/ruby_on_white_500x66.jpg);
+      background-repeat: no-repeat;
+    }
+    #content {
+      padding-top: 20px;
+    }
+  </style>
 </head>
 <body>
 
 <div id="contentc">
 <div id="content">
 <div id="header">
+<% if logged_in? %>Logged in as <%= logged_in_user.username %>. (<%=link_to "Logout", :controller => :sessions, :action => "logout"%>)<% end -%>
 <%= yield :header %>
 </div> <!-- header -->
 <div id="mainbar">

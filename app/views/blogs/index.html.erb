@@ -2,19 +2,20 @@
 
 <table>
   <tr>
-    <th>Path name</th>
     <th>Name</th>
     <th>Description</th>
+    <th>Owners</th>
   </tr>
 
 <% for blog in @blogs %>
   <tr>
-    <td><%=h blog.path_name %></td>
-    <td><%=h blog.name %></td>
+    <td><%=link_to blog.name, blog_path(blog) %></td>
     <td><%=h blog.description %></td>
-    <td><%= link_to 'Show', blog %></td>
+    <td><%=blog.users.map{|u| link_to u.username, user_path(u)}.to_sentence%></td>
+<% if logged_in? && blog.users.include?(logged_in_user) -%>
     <td><%= link_to 'Edit', edit_blog_path(blog) %></td>
     <td><%= link_to 'Destroy', blog, :confirm => 'Are you sure?', :method => :delete %></td>
+<% end -%>
   </tr>
 <% end %>
 </table>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080708163314) do
+ActiveRecord::Schema.define(:version => 20080709122022) do
 
   create_table "blogs", :force => true do |t|
     t.string   "path_name"
@@ -34,6 +34,21 @@ ActiveRecord::Schema.define(:version => 20080708163314) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "content_id",   :limit => 11
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "hashed_password"
+    t.string   "password_salt"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users_blogs", :id => false, :force => true do |t|
+    t.integer "user_id", :limit => 11
+    t.integer "blog_id", :limit => 11
   end
 
 end
