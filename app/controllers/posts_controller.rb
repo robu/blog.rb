@@ -45,6 +45,7 @@ class PostsController < ApplicationController
   # POST /posts.xml
   def create
     @post = Post.new(params[:post])
+    @post.blog = Blog.find(params[:post][:blog_id])
 
     respond_to do |format|
       if @post.save
