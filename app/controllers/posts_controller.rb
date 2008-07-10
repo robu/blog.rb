@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   layout "blogs"
+  before_filter :check_logged_in, :except => ['index', 'show']
 
   # GET /posts
   # GET /posts.xml
@@ -30,6 +31,11 @@ class PostsController < ApplicationController
     @blog = Blog.find(params[:blog])
     @post = Post.new
     @post.blog = @blog
+    unless @blog.users.include? logged_in_user
+      flash[:error] = "Access Denied"
+      redirect_to_referer(blogs_path(:user => @logged_in_user))
+      return
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,6 +46,11 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     @post = Post.find(params[:id])
+    @blog = @post.blog
+    unless @blog.users.include? logged_in_user
+      flash[:error] = "Access Denied"
+      redirect_to_referer(blogs_path(:user => @logged_in_user))
+    end
   end
 
   # POST /posts
