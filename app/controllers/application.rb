@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   # from your application log (in this case, all fields with names like "password"). 
   # filter_parameter_logging :password
   
+  helper_method :logged_in?, :logged_in_user
+  
   def logged_in?
     !! session[:user_id]
   end
