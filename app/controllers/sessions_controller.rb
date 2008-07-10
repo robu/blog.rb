@@ -4,13 +4,12 @@ class SessionsController < ApplicationController
   end
 
   def create
-    form_user = User.new(params[:user])
-    @user = User.find_by_username(form_user.username)
-    if @user && @user.verify_password(form_user.password)
+    @user = User.find_by_username(params[:user][:username])
+    if @user && @user.verify_password(params[:user][:password])
       session[:user_id] = @user.id
       redirect_to blogs_path(:user => @user)
     else
-      @user = form_user
+      @user = User.new(params[:user])
       @user.errors.add_to_base "Invalid username or password"
       render :action => "login"
     end
