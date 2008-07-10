@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :blog
   belongs_to :content
+  has_and_belongs_to_many :users
 
   validates_presence_of :title
   validates_length_of :title, :maximum => 250

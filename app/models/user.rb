@@ -5,9 +5,14 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :username
   validates_length_of :username, :in => 4..30
   has_and_belongs_to_many :blogs, :join_table => "users_blogs"
+  has_and_belongs_to_many :posts
   
   attr_accessor :password
   attr_protected :password
+  
+  def display_name
+    full_name
+  end
   
   def full_name
     "#{first_name} #{last_name}"
