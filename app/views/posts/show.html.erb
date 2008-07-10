@@ -1,3 +1,8 @@
+<% content_for :title do %><%=h @post.title %> | <%=h @post.blog.name %><% end -%>
+<% content_for :header do -%>
+<div id="blog_name"><h1><%=h @blog.name %></h1></div>
+<div id="blog_description"><h2><%=h @blog.description %></h2></div>
+<% end -%>
 <%= render :partial => "blogs/post", :locals => { :post => @post } %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |

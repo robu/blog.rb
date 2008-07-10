@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def logout
     session[:user_id] = nil
-    redirect_to :controller => 'blogs'
+    redirect_to_referer url_for(:controller => 'blogs')
   end
 
 end
