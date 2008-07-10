@@ -46,6 +46,10 @@ class BlogsController < ApplicationController
   # GET /blogs/1/edit
   def edit
     @blog = Blog.find(params[:id])
+    unless @blog.users.include?(logged_in_user)
+      flash[:error] = "Sorry, no access!"
+      redirect_to_referer(blogs_path(:user => logged_in_user))
+    end
   end
 
   # POST /blogs
@@ -55,6 +59,7 @@ class BlogsController < ApplicationController
 
     respond_to do |format|
       if @blog.save
+        @blog.users << logged_in_user
         flash[:notice] = 'Blog was successfully created.'
         format.html { redirect_to(@blog) }
         format.xml  { render :xml => @blog, :status => :created, :location => @blog }
@@ -69,6 +74,11 @@ class BlogsController < ApplicationController
   # PUT /blogs/1.xml
   def update
     @blog = Blog.find(params[:id])
+    unless @blog.users.include?(logged_in_user)
+      flash[:error] = "Sorry, no access!"
+      redirect_to_referer(blogs_path(:user => logged_in_user))
+      return
+    end
 
     respond_to do |format|
       if @blog.update_attributes(params[:blog])
@@ -86,6 +96,11 @@ class BlogsController < ApplicationController
   # DELETE /blogs/1.xml
   def destroy
     @blog = Blog.find(params[:id])
+    unless @blog.users.include?(logged_in_user)
+      flash[:error] = "Sorry, no access!"
+      redirect_to_referer(blogs_path(:user => logged_in_user))
+      return
+    end
     @blog.destroy
 
     respond_to do |format|
