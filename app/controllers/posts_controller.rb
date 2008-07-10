@@ -50,6 +50,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        @post.users << logged_in_user unless @post.users.include?(logged_in_user)
         flash[:notice] = 'Post was successfully created.'
         format.html { redirect_to(@post) }
         format.xml  { render :xml => @post, :status => :created, :location => @post }
@@ -68,6 +69,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
+        @post.users << logged_in_user unless @post.users.include?(logged_in_user)
         flash[:notice] = 'Post was successfully updated.'
         format.html { redirect_to(@post) }
         format.xml  { head :ok }
