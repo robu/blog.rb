@@ -1,4 +1,6 @@
 class BlogsController < ApplicationController
+  before_filter :check_logged_in, :except => ['index', 'show']
+
   # GET /blogs
   # GET /blogs.xml
   def index

@@ -3,8 +3,6 @@
 <table>
   <tr>
     <th>Username</th>
-    <th>Hashed password</th>
-    <th>Password salt</th>
     <th>First name</th>
     <th>Last name</th>
   </tr>
@@ -12,8 +10,6 @@
 <% for user in @users %>
   <tr>
     <td><%=h user.username %></td>
-    <td><%=h user.hashed_password %></td>
-    <td><%=h user.password_salt %></td>
     <td><%=h user.first_name %></td>
     <td><%=h user.last_name %></td>
     <td><%= link_to 'Show', user %></td>

@@ -20,4 +20,16 @@ class ApplicationController < ActionController::Base
   def logged_in_user
     logged_in? ? User.find(session[:user_id]) : nil
   end
+  
+  def redirect_to_referer(backup_url)
+      referer = request.headers['Referer']
+      redirect_to referer || backup_url
+  end
+  
+  def check_logged_in
+    unless logged_in?
+      flash[:error] = "You need to be logged in to access that page"
+      redirect_to_referer(blogs_path())
+    end
+  end
 end

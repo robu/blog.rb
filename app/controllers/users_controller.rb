@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_filter :check_logged_in, :only => ['destroy', 'update', 'edit', 'blogs']
   
   # GET /users
   # GET /users.xml
@@ -36,6 +37,10 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    unless logged_in_user == @user
+      flash[:error] = "Sorry, no access"
+      redirect_to_referer(users_path())
+    end
   end
 
   # POST /users
@@ -60,6 +65,11 @@ class UsersController < ApplicationController
   # PUT /users/1.xml
   def update
     @user = User.find(params[:id])
+    unless logged_in_user == @user
+      flash[:error] = "Sorry, no access"
+      redirect_to_referer(users_path())
+      return
+    end
     @user.password = params[:password] if params[:password]
 
     respond_to do |format|
@@ -78,6 +88,11 @@ class UsersController < ApplicationController
   # DELETE /users/1.xml
   def destroy
     @user = User.find(params[:id])
+    unless logged_in_user == @user
+      flash[:error] = "Sorry, no access"
+      redirect_to_referer(users_path())
+      return
+    end
     @user.destroy
 
     respond_to do |format|

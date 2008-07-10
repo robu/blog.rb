@@ -1,0 +1,13 @@
+<!-- flash rendering -->
+<% 
+  unless flash.empty? 
+    flashes = [[:notice, "flash_notice"], [:error, "flash_error"], [:warning, "flash_warning"] ]
+    flashes.each do |pair|
+      key, id_val = pair
+-%>
+    <% if flash[key] -%>
+    <div id="<%= id_val %>"><%= flash[key] %></div>
+    <% end -%>
+  <% end -%>
+<% end -%>
+<!-- end of flash rendering -->
