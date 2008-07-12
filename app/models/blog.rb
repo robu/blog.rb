@@ -16,7 +16,7 @@ class Blog < ActiveRecord::Base
   
   protected
   def validate
-    invalid_blog_names = %w(blogs posts users admin tags application sessions)
+    invalid_blog_names = %w(blogs posts users admin tags application sessions index new create update destroy show delete save post get)
     errors.add("path_name", "'#{path_name}' is not available") if invalid_blog_names.include?(path_name)
   end
 end
