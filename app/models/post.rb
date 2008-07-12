@@ -13,8 +13,8 @@ class Post < ActiveRecord::Base
   
   attr_protected :blog_id
   
-  named_scope :published, :conditions => "published_at is not null", :order => "published_at desc"
-  named_scope :unpublished, :conditions => "published_at is null", :order => "updated_at desc"
+  named_scope :published, lambda { {:conditions => ["published_at is not null and published_at < ?", Time.now], :order => "published_at desc"} }
+  named_scope :unpublished, lambda { {:conditions => ["published_at is null or published_at >= ?", Time.now], :order => "updated_at desc"} }
   
   def body
     content.target if content
