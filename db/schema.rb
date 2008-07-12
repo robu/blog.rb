@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080710131033) do
+ActiveRecord::Schema.define(:version => 20080712205335) do
 
   create_table "blogs", :force => true do |t|
     t.string   "path_name"
@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20080710131033) do
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "default_blog", :default => false
   end
 
   create_table "contents", :force => true do |t|

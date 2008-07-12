@@ -9,14 +9,25 @@ class Blog < ActiveRecord::Base
   validates_length_of :name, :maximum => 80
   
   validates_length_of :description, :maximum => 200
-  
+
   def published_posts
     self.posts.published
+  end
+
+  def self.default
+    blog = self.find(:first, :conditions => "default_blog=true")
+    blog || (self.count == 1 ? self.first : nil)
   end
   
   protected
   def validate
     invalid_blog_names = %w(blogs posts users admin tags application sessions index new create update destroy show delete save post get)
     errors.add("path_name", "'#{path_name}' is not available") if invalid_blog_names.include?(path_name)
+  end
+  
+  def before_save
+    if self.default_blog
+      connection.update_sql "update blogs set default_blog=false where default_blog=true"
+    end
   end
 end

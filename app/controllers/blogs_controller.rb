@@ -21,10 +21,15 @@ class BlogsController < ApplicationController
   def show
     if params[:id]
       @blog = Blog.find(params[:id])
-      redirect_to "/#{@blog.path_name}"
+      redirect_to "/#{@blog.path_name}" unless @blog.default_blog?
+      redirect_to :controller => :default if @blog.default_blog?
       return
     end
     @blog = Blog.find_by_path_name(params[:path_name])
+    if @blog.default_blog? || @blog == Blog.default
+      redirect_to :controller => :default
+      return
+    end
 
     respond_to do |format|
       format.html # show.html.erb

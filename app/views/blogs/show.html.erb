@@ -9,5 +9,5 @@
 <%= link_to 'Create Post', new_post_path(:blog => @blog) %>
 <% end -%>
 
-<%= render :partial => "post", :collection => @blog.published_posts %>
+<%= render :partial => "blogs/post", :collection => @blog.published_posts %>
 
