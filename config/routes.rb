@@ -41,7 +41,7 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
 
   # Install the default routes as the lowest priority.
-  
+  map.connect 'feed/:id', :controller => 'feed', :action => 'index', :format => :xml
   map.connect ':path_name', :controller => 'blogs', :action => 'show'
   map.connect ':controller/:action/:id'
   map.connect ':controller/:action/:id.:format'
