@@ -3,6 +3,8 @@ class Post < ActiveRecord::Base
   belongs_to :content
   has_and_belongs_to_many :users
 
+  acts_as_friendly_param :title
+
   validates_presence_of :title
   validates_length_of :title, :maximum => 250
   

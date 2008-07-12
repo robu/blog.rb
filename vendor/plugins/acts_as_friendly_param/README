@@ -1,0 +1,91 @@
+	Friendly Param
+	==============
+
+	A Ruby on Rails plugin that swaps the commonly used numeric :id
+	based URLs (/posts/34), for more useful & human readable URLs 
+	like (/posts/34-my-latest-spoon-collection)
+
+
+	Author
+	======
+
+	http://www.chrisfarms.com
+
+
+	Usage
+	=====
+
+	declare a field in your model that you wish to use for the textual
+	slug with the acts_as_friendly_param macro.
+
+	class Post < ActiveRecord::Base
+	  acts_as_friendly_param :name
+	end
+
+	That's it!
+
+	The result of the Post#name method will be appended to the URL
+
+	helpers like:
+
+	<%= link_to 'view post', :action => 'show', :id => @post %>
+
+	will produce URLs like
+
+	/posts/12-monkies-are-coming
+
+
+
+	Unicode Concerns
+	================
+
+	Although many unicode characters are actually valid in URIs, the
+	rails url helpers are quite strict with their escaping and you can
+	end up with some pretty ugly urls.
+	It is also good for searching if e and é are treated equally.
+
+	So.. friendly-param will try to tidy up the following:
+
+	* remove any accents from characters
+	* strip out any plain-crazy characters (Omega, Pi etc)
+	* convert spaces into hyphens
+
+
+
+	SEO Concerns
+	============
+
+	To prevent multiple URLs pointing to the same resource, and having
+	a negative effect on search-engine ranking, friendly-url will
+	use 301 redirects on any ambiguous GET requests.
+
+	The following behavior should be expected
+
+	* trailing slashes will be removed from URLs
+	* requests for resources using incorrect slugs will be redirected
+	  to the the correct URL
+	* if the routes file is drastically modified then any old URLs that 
+	  still work will be redirected to there new equivalent. 
+
+
+
+
+	Gotchas
+	=======
+
+	Once a model has is acting as a friendly param then #find will not
+	act the same for String/Fixnum objects.
+
+	Post.find('8')  =>> RecordMoved Error 
+	Post.find(8) 		=>> OK
+
+	Ensure that you use don't call #id directly when using url_for
+
+	eg.
+
+	<%= link_to 'show animal', :action => 'show', :id => @animal %>
+
+	NOT
+
+	<%= link_to 'show animal', :action => 'show', :id => @animal.id %>
+
