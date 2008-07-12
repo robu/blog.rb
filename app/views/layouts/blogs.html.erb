@@ -12,6 +12,9 @@
   <%= javascript_include_tag "syntax_highlighter/shBrushJScript.js" %>
   <%= javascript_include_tag "syntax_highlighter/shBrushJava.js" %>
   <link rel="shortcut icon" href="/favicon.ico">
+<% if @blog -%>
+  <%= auto_discovery_link_tag(:rss, "/feed/#{@blog.id}") %>
+<% end -%>
   <style>
     #header {
       background-image: url(/images/ruby_on_white_500x66.jpg);
