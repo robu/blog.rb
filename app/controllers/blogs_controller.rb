@@ -31,6 +31,7 @@ class BlogsController < ApplicationController
       return
     end
 
+    @posts = @blog.published_posts.paginate :page => params[:page], :per_page => 10
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @blog }
