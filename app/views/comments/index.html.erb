@@ -1,0 +1,9 @@
+<p>
+Post: <%= @post.title %>
+</p>
+
+<ol>
+<% for comment in @comments do -%>
+<li><%= comment.title || comment.body %></li>
+<% end -%>
+</ol>

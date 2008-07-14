@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  post_id: 1
+  commenter_name: MyString
+  commenter_email: MyString
+  commenter_url: MyString
+  title: MyString
+  body_source: MyText
+  body_html: MyText
+  moderation_status: MyString
+
+two:
+  post_id: 1
+  commenter_name: MyString
+  commenter_email: MyString
+  commenter_url: MyString
+  title: MyString
+  body_source: MyText
+  body_html: MyText
+  moderation_status: MyString

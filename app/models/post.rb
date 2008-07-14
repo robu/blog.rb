@@ -1,6 +1,7 @@
 class Post < ActiveRecord::Base
   belongs_to :blog
   belongs_to :content
+  has_many :comments
   has_and_belongs_to_many :users
 
   acts_as_friendly_param :title

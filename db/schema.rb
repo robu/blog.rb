@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080712205335) do
+ActiveRecord::Schema.define(:version => 20080713194111) do
 
   create_table "blogs", :force => true do |t|
     t.string   "path_name"
@@ -18,6 +18,19 @@ ActiveRecord::Schema.define(:version => 20080712205335) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.boolean  "default_blog", :default => false
+  end
+
+  create_table "comments", :force => true do |t|
+    t.integer  "post_id",           :limit => 11
+    t.string   "commenter_name"
+    t.string   "commenter_email"
+    t.string   "commenter_url"
+    t.string   "title"
+    t.text     "body_source"
+    t.text     "body_html"
+    t.string   "moderation_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "contents", :force => true do |t|
