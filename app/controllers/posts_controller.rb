@@ -18,6 +18,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @blog = @post.blog
+    @comments = @post.comments.find(:all, :order => "created_at asc")
 
     respond_to do |format|
       format.html # show.html.erb

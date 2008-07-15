@@ -1,0 +1,27 @@
+<div class="comment">
+<div class="comment_header">
+Comment by 
+<span class="commenter">
+<% if comment.commenter_email -%>
+<%= mail_to comment.commenter_email, comment.commenter_name, :style => "color:white" %>
+<% else -%>
+<%=h comment.commenter_name  %>
+<% end -%>
+</span>
+ &mdash;
+ <%= comment.created_at.strftime "%Y-%m-%d %H:%M" %>
+</div>
+<div class="comment_content">
+<% if comment.title -%>
+<div class="comment_title">
+<%= comment.title %>
+</div>
+<% end -%>
+<% if comment.body -%>
+<div class="comment_body">
+<%= comment.body %>
+</div>
+<% end -%>
+</div>
+</div>
+

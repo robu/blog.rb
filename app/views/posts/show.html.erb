@@ -1,9 +1,17 @@
 <% content_for :title do %><%=h @post.title %> | <%=h @post.blog.name %><% end -%>
 <% content_for :header do -%>
-<div id="blog_name"><h1><%=h @blog.name %></h1></div>
+<div id="blog_name"><h1><%=link_to @blog.name, blog_path(@blog), :style => "color:#736451;text-decoration:none" %></h1></div>
 <div id="blog_description"><h2><%=h @blog.description %></h2></div>
 <% end -%>
 <%= render :partial => "blogs/post", :locals => { :post => @post } %>
 
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', blog_path(@post.blog) %>
+<% if logged_in? && @post.blog.users.include?(logged_in_user) -%>
+<%= link_to 'Edit', edit_post_path(@post) %>
+<% end -%>
+
+<% if @comments -%>
+<div id="comments">
+<%= render :partial => "comments/comment", :collection => @comments %>
+</div>
+<% end -%>
+

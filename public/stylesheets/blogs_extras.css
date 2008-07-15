@@ -1,0 +1,16 @@
+.comment {
+  border: dotted 1px #e44268;
+  margin-bottom: 15px;
+}
+
+.comment_header {
+  padding: 5 10 5 10;
+	background-color: #e44268;
+	color: white;
+	font-style: italic;
+}
+
+.comment_content {
+  padding: 5 10 5 10;
+}
+
