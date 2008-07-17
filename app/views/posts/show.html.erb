@@ -9,6 +9,19 @@
 <%= link_to 'Edit', edit_post_path(@post) %>
 <% end -%>
 
+<script type="text/javascript">
+  $$('.comments_info').each(function(e) {e.hide();});
+</script>
+
+
+<p><a name="comments" style="text-decoration:none">
+<%- unless @comments.empty? -%>
+Comments (<%= @comments.size %>):
+<%- else -%>
+No comments posted.
+<%- end -%>
+</a></p>
+
 <% if @comments -%>
 <div id="comments">
 <%= render :partial => "comments/comment", :collection => @comments %>

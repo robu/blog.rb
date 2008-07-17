@@ -4,5 +4,6 @@
 <div class="post_body storycontent">
 <%= post.body %>
 </div>
+<div class="comments_info"><%= link_to "#{post.comments.count} comments", post_path(post, :anchor => "comments") %></div>
 </div>
 
