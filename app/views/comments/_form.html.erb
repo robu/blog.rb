@@ -1,0 +1,24 @@
+<%
+  @comment ||= Comment.new :post => @post
+-%>
+
+<% form_for(@comment, :url => post_comment_path(@post, @comment)) do |f| -%>
+  <%= f.error_messages %>
+<p>
+  <b><%= f.label :commenter_name, "Name" %></b><br/>
+  <%= f.text_field :commenter_name %>
+</p>
+<p>
+  <b><%= f.label :commenter_email, "Email" %></b><br/>
+  <%= f.text_field :commenter_email %>
+</p>
+<p>
+  <b><%= f.label :body_source, "Comment Text" %></b><br/>
+  <%= f.text_area :body_source, :size => "50x8"%>  
+</p>
+<p>
+  <%= f.submit "Save" %>
+</p>
+
+<% end -%>
+

@@ -22,6 +22,8 @@ No comments posted.
 <%- end -%>
 </a></p>
 
+<%= render :partial => "comments/form" %>
+
 <% if @comments -%>
 <div id="comments">
 <%= render :partial => "comments/comment", :collection => @comments %>
