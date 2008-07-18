@@ -15,7 +15,12 @@ class CommentsController < ApplicationController
   # POST messages_url
   def create
     if (@comment = @post.comments.create(params[:comment]))
-      render :text => "Your comment has been saved. Thank you!"
+#      render :text => "Your comment has been saved. Thank you!"
+      render :update do |page|
+        page[:comment_form].visual_effect :fade, :duration => 0.3
+        page.insert_html :bottom, "comments", :partial => "comment", :locals => {:comment => @comment, :comment_counter => @post.comments.size+1}
+        page["comment_#{@comment.id}".to_sym].visual_effect :highlight, :duration => 4.0
+      end
     else
       @comment.errors.add_to_base "Unable to save comment. Please try again later."
       render :partial => "form"
