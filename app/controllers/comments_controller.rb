@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :load_post
+  layout nil
 
   # GET messages_url
   def index
@@ -13,7 +14,12 @@ class CommentsController < ApplicationController
 
   # POST messages_url
   def create
-    # create a new message
+    if (@comment = @post.comments.create(params[:comment]))
+      render :text => "Your comment has been saved. Thank you!"
+    else
+      @comment.errors.add_to_base "Unable to save comment. Please try again later."
+      render :partial => "form"
+    end
   end
 
   # GET message_url(:id => 1)
