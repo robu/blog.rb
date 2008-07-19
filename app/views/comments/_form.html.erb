@@ -3,7 +3,7 @@
 -%>
 
 <% remote_form_for(@comment, :url => post_comment_path(@post, @comment)) do |f| -%>
-  <%= f.error_messages %>
+  <div id="form_errors"><%= f.error_messages %></div>
 <p>
   <b><%= f.label :commenter_name, "Name" %></b><br/>
   <%= f.text_field :commenter_name %>

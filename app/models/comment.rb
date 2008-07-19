@@ -5,7 +5,7 @@ class Comment < ActiveRecord::Base
   validates_associated :post
 
   validates_presence_of :commenter_name
-  validates_length_of :commenter_name, :in => 1..200
+  validates_length_of :commenter_name, :maximum => 200
   
   validates_length_of :commenter_email, :maximum => 200, :allow_blank => true
   validates_length_of :commenter_url, :maximum => 250, :allow_blank => true
