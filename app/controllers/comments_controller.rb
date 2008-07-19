@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
       render :update do |page|
         page[:comment_form].visual_effect :fade, :duration => 0.3
         page.insert_html :bottom, "comments", :partial => "comment", :locals => {:comment => @comment, :comment_counter => @post.comments.size+1}
+        page["comment_#{@comment.id}".to_sym].scroll_to
         page["comment_#{@comment.id}".to_sym].visual_effect :highlight, :duration => 4.0
       end
     else
