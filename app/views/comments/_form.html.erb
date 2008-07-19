@@ -2,7 +2,7 @@
   @comment ||= Comment.new :post => @post
 -%>
 
-<% remote_form_for(@comment, :url => post_comment_path(@post, @comment), :update => "comment_form") do |f| -%>
+<% remote_form_for(@comment, :url => post_comment_path(@post, @comment)) do |f| -%>
   <%= f.error_messages %>
 <p>
   <b><%= f.label :commenter_name, "Name" %></b><br/>
