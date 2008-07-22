@@ -23,6 +23,8 @@ class CommentsController < ApplicationController
         page[:comments_count_info].visual_effect :highlight, :duration => 4.0
         page["comment_#{@comment.id}".to_sym].scroll_to
         page["comment_#{@comment.id}".to_sym].visual_effect :highlight, :duration => 4.0
+        page[:form_hide_link].hide
+        page[:form_show_link].show
       end
     else
       @comment.errors.add_to_base "Unable to save comment. Please try again later."

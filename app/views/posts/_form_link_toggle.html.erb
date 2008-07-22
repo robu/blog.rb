@@ -1,0 +1,16 @@
+<%= 
+  link_to_function "Add comment &raquo;", nil, :id => "form_show_link" do |page|
+    page[:comment_form].show
+    page[:form_show_link].hide
+    page[:form_hide_link].show
+    page[:comment_commenter_name].focus
+  end 
+-%>
+<%= 
+  link_to_function "&laquo; Hide comment form", nil, :id => "form_hide_link", :style=>"display:none" do |page|
+    page[:comment_form].visual_effect :switch_off, :duration => 0.3
+    page[:form_hide_link].hide
+    page[:form_show_link].show
+  end 
+-%>
+
