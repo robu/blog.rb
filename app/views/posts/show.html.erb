@@ -15,12 +15,9 @@
 
 
 <p><a name="comments" style="text-decoration:none">
-<%- unless @comments.empty? -%>
-Comments (<%= @comments.size %>):
-<%- else -%>
-No comments posted.
-<%- end -%>
+<span id="comments_count_info"><%= render :partial => "posts/comments_count_info", :locals => {:comments => @comments} %></span>
 </a>
+
 <%= 
   link_to_function "Add comment &raquo;", nil, :id => "form_show_link" do |page|
 #    page[:comment_form].visual_effect :appear, :after_finish => '$("comment_commenter_name").focus();'
