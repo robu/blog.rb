@@ -1,25 +1,6 @@
 <h1>Editing post</h1>
 
-<% form_for(@post) do |f| %>
-  <%= f.error_messages %>
-  <%= f.hidden_field :blog_id %>
-
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :body %><br />
-    <%= f.text_area :body, :value => (@post.content ? @post.content.source : "") %>
-  </p>
-  <p>
-    <%= f.label :published_at %><br />
-    <%= f.datetime_select :published_at %>
-  </p>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
-<% end %>
+<%= render :partial => "form", :locals => {:submit_text => "Update"} %>
 
 <%= link_to 'Show', @post %> |
 <%= link_to 'Back', posts_path %>
