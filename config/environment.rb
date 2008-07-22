@@ -7,6 +7,10 @@
 # Specifies gem version of Rails to use when vendor/rails is not present
 RAILS_GEM_VERSION = '2.1.0' unless defined? RAILS_GEM_VERSION
 
+# reCAPTCHA keys:
+RCC_PUB = "6LfTigIAAAAAAMpg9dztd6-kQuSzLgLD-w1L7ui4"
+RCC_PRIV = "6LfTigIAAAAAAFyP2mGmOP4uFvspzZQcTtDT70kr"
+
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
@@ -28,6 +32,7 @@ Rails::Initializer.run do |config|
 
 config.gem "RedCloth", :lib => "redcloth", :source => "http://code.whytheluckystiff.net"
 config.gem "mislav-will_paginate", :lib => 'will_paginate', :source => 'http://gems.github.com'
+config.gem "recaptcha", :source => 'http://www.loonsoft.com/recaptcha/pkg/'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

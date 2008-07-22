@@ -14,8 +14,11 @@ class CommentsController < ApplicationController
 
   # POST messages_url
   def create
-    @comment = @post.comments.create(params[:comment])
-    if @comment.valid?
+    
+    @comment = Comment.new(params[:comment])
+    @comment.post = @post
+    
+    if validate_recap(params, @comment.errors) && @comment.save
       render :update do |page|
         page[:comment_form].visual_effect :fade, :duration => 0.3
         page.insert_html :bottom, "comments", :partial => "comment", :locals => {:comment => @comment, :comment_counter => @post.comments.size+1}
