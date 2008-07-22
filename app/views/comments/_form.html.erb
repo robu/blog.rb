@@ -13,6 +13,10 @@
   <%= f.text_field :commenter_email %>
 </p>
 <p>
+  <b><%= f.label :commenter_url, "Website" %></b><br/>
+  <%= f.text_field :commenter_url %>
+</p>
+<p>
   <b><%= f.label :body_source, "Comment Text" %></b><br/>
   <%= f.text_area :body_source, :size => "50x8"%>  
 </p>
