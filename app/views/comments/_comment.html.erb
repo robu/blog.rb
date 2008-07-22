@@ -1,7 +1,11 @@
 <div class="comment" id="comment_<%= comment.id %>">
 <div class="comment_header">
+<% if comment_counter && comment_counter > 0 -%>
 <span class="comment_count"><%= comment_counter %>.</span>
 Comment by 
+<% else -%>
+New comment by
+<% end -%>
 <span class="commenter">
 <% if comment.commenter_email -%>
 <%= mail_to comment.commenter_email, comment.commenter_name, :style => "color:white" %>
