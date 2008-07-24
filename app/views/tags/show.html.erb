@@ -1,6 +1,8 @@
 <%
   if @title
--%><h3>Posts for tag <%=h @title %></h3>
+-%><h3>Posts for tag <%=h @title %> (<%= 
+  link_to_function "Close", update_page {|page| page.visual_effect(:fade, "post_#{ @post.id }_taginfo", :duration => 0.2)} 
+%>)</h3>
 <% 
   end 
 -%>

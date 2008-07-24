@@ -5,7 +5,7 @@ Published <%= post.published_at.strftime "%Y-%m-%d" %> by <%= post.users.map(&:d
 <%- unless post.tags.empty? -%>
 <br/>
 Tags: <%= render :partial => "posts/tag", :collection => post.tags, :spacer_template => "/posts/tag_spacer", :locals => {:post => post} %>
-<div id="post_<%= post.id %>_taginfo"></div>
+<div id="post_<%= post.id %>_taginfo" style="display:none"></div>
 <%- end -%>
 </div>
 <div class="post_body storycontent">

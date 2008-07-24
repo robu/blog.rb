@@ -1,6 +1,8 @@
 <%= 
   link_to_remote tag.name,
-    :url => {:controller => :tags, :action => :show, :id => tag, :blog_id => post.blog, :show_title => true},
+    :url => {:controller => :tags, :action => :show, :id => tag, :blog_id => post.blog, :post_id => post, :show_title => true},
     :method => :get,
-    :update => "post_#{ post.id }_taginfo"
+    :update => "post_#{ post.id }_taginfo",
+    :loading => update_page {|page| page.visual_effect(:fade, "post_#{ post.id }_taginfo", :duration => 0.2)},
+    :complete => update_page {|page| page.visual_effect(:appear, "post_#{ post.id }_taginfo", :duration => 0.2)}
 -%>
