@@ -7,7 +7,7 @@ Comment by
 New comment by
 <% end -%>
 <span class="commenter">
-<% if comment.commenter_email -%>
+<% unless comment.commenter_email.blank? -%>
 <%= mail_to comment.commenter_email, comment.commenter_name, :style => "color:white" %>
 <% else -%>
 <%=h comment.commenter_name  %>
