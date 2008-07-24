@@ -17,7 +17,7 @@
   <p>
     <%= f.label :published_at %><br />
     <%# = f.datetime_select :published_at %>
-    <%= calendar_date_select_tag "post[published_at]", Time.now, :embedded => true, :time => true %>
+    <%= calendar_date_select_tag "post[published_at]", @post.published_at || Time.now, :embedded => true, :time => true %>
 
   </p>
   <p>
