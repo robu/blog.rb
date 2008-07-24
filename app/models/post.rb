@@ -5,6 +5,7 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :users
 
   acts_as_friendly_param :title
+  acts_as_taggable_on :tags
 
   validates_presence_of :title
   validates_length_of :title, :maximum => 250

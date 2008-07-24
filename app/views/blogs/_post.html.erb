@@ -1,6 +1,13 @@
 <div class="post">
 <div class="post_title"><h1><%= link_to post.title, post_path(post) %></h1></div>
-<div class="meta">Published <%= post.published_at.strftime "%Y-%m-%d" %> by <%= post.users.map(&:display_name).to_sentence %></div>
+<div class="meta">
+Published <%= post.published_at.strftime "%Y-%m-%d" %> by <%= post.users.map(&:display_name).to_sentence %>
+<%- unless post.tags.empty? -%>
+<br/>
+Tags: <%= render :partial => "posts/tag", :collection => post.tags, :spacer_template => "/posts/tag_spacer", :locals => {:post => post} %>
+<div id="post_<%= post.id %>_taginfo" style="display:none"></div>
+<%- end -%>
+</div>
 <div class="post_body storycontent">
 <%= post.body %>
 </div>

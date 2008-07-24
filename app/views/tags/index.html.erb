@@ -1,0 +1,14 @@
+<% content_for :title do %>Tags for <%=h @blog.name %><% end %>
+<% content_for :header do -%>
+<div id="blog_name"><h1>Tags for <%=h @blog.name %></h1></div>
+<% end -%>
+
+<p>
+These tags have been used to label posts in the blog "<%= link_to @blog.name, blog_path(@blog) %>". 
+Click a tag to see a list of posts for that tag.
+</p>
+
+<ul>
+<%= render :partial => "tag", :collection => @tags %>
+</ul>
+

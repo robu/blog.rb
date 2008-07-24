@@ -14,6 +14,10 @@ class Blog < ActiveRecord::Base
     self.posts.published
   end
 
+  def tags
+    self.posts.map(&:tags).flatten.uniq.sort {|t1,t2| t1.name <=> t2.name}
+  end
+
   def self.default
     blog = self.find(:first, :conditions => "default_blog=true")
     blog || (self.count == 1 ? self.first : nil)

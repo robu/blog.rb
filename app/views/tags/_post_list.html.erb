@@ -1,0 +1,6 @@
+<% posts.each_with_index do |post, index| -%>
+<div style="padding-left: 2em">
+<%= index+1 %>. <%= link_to post.title, post_path(post) %> (Published <%= post.published_at.strftime "%Y-%m-%d" %>)
+</div>
+<% end -%>
+
