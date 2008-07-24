@@ -26,6 +26,7 @@ class BlogsController < ApplicationController
       return
     end
     @blog = Blog.find_by_path_name(params[:path_name])
+    render :file => "#{RAILS_ROOT}/public/404.html", :status => 404 and return unless @blog
     if @blog.default_blog? || @blog == Blog.default
       redirect_to :controller => :default
       return
