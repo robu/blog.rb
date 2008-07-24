@@ -1,0 +1,7 @@
+<%
+  if @title
+-%><h3>Posts for tag <%=h @title %></h3>
+<% 
+  end 
+-%>
+<%= render :partial => "post_list", :locals => {:posts => @posts} %>

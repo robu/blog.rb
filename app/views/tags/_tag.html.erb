@@ -1,0 +1,11 @@
+<li>
+<%#= tag.name %>
+
+<%= 
+  link_to_remote tag.name, 
+  :update => "posts_for_tag_#{tag.id}",
+  :url => {:action => "show", :id => tag},
+  :method => :get
+%>
+<span id="posts_for_tag_<%= tag.id %>"></span>
+</li>

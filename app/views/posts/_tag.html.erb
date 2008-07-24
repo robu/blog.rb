@@ -1,0 +1,6 @@
+<%= 
+  link_to_remote tag.name,
+    :url => {:controller => :tags, :action => :show, :id => tag, :blog_id => post.blog, :show_title => true},
+    :method => :get,
+    :update => "post_#{ post.id }_taginfo"
+-%>
