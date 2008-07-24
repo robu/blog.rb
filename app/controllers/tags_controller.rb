@@ -18,10 +18,10 @@ class TagsController < ApplicationController
   # GET message_url(:id => 1)
   def show
     @tag = Tag.find(params[:id])
-    @post = Post.find(params[:post_id])
     render :file => "#{RAILS_ROOT}/public/404.html", :status => 404 and return unless @tag and @blog.tags.include?(@tag)
     @posts = @tag.taggings.map(&:taggable).sort {|p1,p2| p2.published_at <=> p1.published_at}
     @title = @tag.name if params[:show_title]
+    @post = Post.find(params[:post_id]) if params[:post_id]
     render :layout => false
   end
 
