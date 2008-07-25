@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080722213910) do
+ActiveRecord::Schema.define(:version => 20080725072734) do
 
   create_table "blogs", :force => true do |t|
     t.string   "path_name"
@@ -26,11 +26,10 @@ ActiveRecord::Schema.define(:version => 20080722213910) do
     t.string   "commenter_email"
     t.string   "commenter_url"
     t.string   "title"
-    t.text     "body_source"
-    t.text     "body_html"
     t.string   "moderation_status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "content_id",        :limit => 11
   end
 
   create_table "contents", :force => true do |t|

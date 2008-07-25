@@ -21,7 +21,7 @@ class Post < ActiveRecord::Base
   named_scope :unpublished, lambda { {:conditions => ["published_at is null or published_at >= ?", Time.now], :order => "updated_at desc"} }
   
   def body
-    content.target if content
+    (content.target || content.source) if content
   end
 
   def body=(text)

@@ -17,8 +17,8 @@
   <%= f.text_field :commenter_url %>
 </p>
 <p>
-  <b><%= f.label :body_source, "Comment Text" %></b><br/>
-  <%= f.text_area :body_source, :size => "50x8" %>  
+  <b><%= f.label :body, "Comment Text" %></b><br/>
+  <%= f.text_area :body, :size => "50x8", :value => (@comment.content ? @comment.content.source : "") %>  
 </p>
 
 <%= get_captcha() %>
