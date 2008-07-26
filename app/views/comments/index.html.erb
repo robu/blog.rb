@@ -1,9 +1,13 @@
+<% if @post -%>
 <p>
-Post: <%= @post.title %>
+Post: <%=h @post.title %>
 </p>
+<% elsif @blog -%>
+Blog: <%=h @blog.name %>
+<% end -%>
 
 <ol>
 <% for comment in @comments do -%>
-<li><%= comment.title || comment.body %></li>
+<li><%= comment.title || comment.body %><% unless @post %> (<%= link_to comment.post.title, post_path(comment.post) %>)<% end %></li>
 <% end -%>
 </ol>

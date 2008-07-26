@@ -1,10 +1,11 @@
 class CommentsController < ApplicationController
-  before_filter :load_post
+  before_filter :load_dependent
   layout nil
 
   # GET messages_url
   def index
-    @comments = @post.comments.find(:all, :order => "created_at desc")
+    @comments = @post.comments.find(:all, :order => "created_at desc") if @post
+    @comments = @blog.posts.map(&:comments).flatten.uniq.sort {|c1,c2| c2.created_at <=> c1.created_at} if @blog
   end
 
   # GET new_message_url
@@ -58,7 +59,8 @@ class CommentsController < ApplicationController
   end
   
   protected
-  def load_post
-    @post = Post.find(params[:post_id])
+  def load_dependent
+    @post = Post.find(params[:post_id]) if params[:post_id]
+    @blog = Blog.find(params[:blog_id]) if params[:blog_id]
   end
 end
