@@ -31,5 +31,5 @@ class Post < ActiveRecord::Base
     else
       self.content = Content.create! :source => text
     end
-  end  
+  end
 end
