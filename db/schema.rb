@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080725072734) do
+ActiveRecord::Schema.define(:version => 20080729145723) do
 
   create_table "blogs", :force => true do |t|
     t.string   "path_name"
@@ -32,10 +32,34 @@ ActiveRecord::Schema.define(:version => 20080725072734) do
     t.integer  "content_id",        :limit => 11
   end
 
+  create_table "content_images", :force => true do |t|
+    t.integer  "size",         :limit => 11
+    t.string   "content_type"
+    t.string   "filename"
+    t.integer  "height",       :limit => 11
+    t.integer  "width",        :limit => 11
+    t.integer  "parent_id",    :limit => 11
+    t.string   "thumbnail"
+    t.integer  "db_file_id",   :limit => 11
+    t.integer  "owner_id",     :limit => 11
+    t.string   "owner_type"
+    t.string   "alt_text"
+    t.text     "description"
+    t.integer  "user_id",      :limit => 11
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "contents", :force => true do |t|
     t.text     "target"
     t.text     "source"
     t.string   "source_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "db_files", :force => true do |t|
+    t.binary   "data"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

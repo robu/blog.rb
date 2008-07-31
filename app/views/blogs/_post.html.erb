@@ -9,6 +9,9 @@ Tags: <%= render :partial => "posts/tag", :collection => post.tags.find(:all, :o
 <%- end -%>
 </div>
 <div class="post_body storycontent">
+<% unless post.content_images.empty? -%>
+<%= image_tag post.content_images.first.db_file.public_filename %>
+<% end -%>
 <%= post.body %>
 </div>
 <div class="comments_info"><%= link_to "#{post.comments.count} comments", post_path(post, :anchor => "comments") %></div>

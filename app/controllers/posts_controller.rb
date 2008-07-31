@@ -59,6 +59,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     @post.blog = Blog.find(params[:post][:blog_id])
+    @post.content_images << ContentImage.new(:uploaded_data => params[:content_image]) if params[:content_image]
     return unless @post.blog.users.include? logged_in_user
 
     respond_to do |format|
