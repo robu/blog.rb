@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     unless logged_in?
       # This is just to protect production environment to get spammed with new users
       flash[:error] = "Sorry, no access"
-      redirect_to :controller => :default
+      redirect_to :controller => :default and return
     end
     respond_to do |format|
       format.html # new.html.erb
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
     unless logged_in?
       # This is just to protect production environment to get spammed with new users
       flash[:error] = "Sorry, no access"
-      redirect_to :controller => :default
+      redirect_to :controller => :default and return
     end
     respond_to do |format|
       if @user.save
