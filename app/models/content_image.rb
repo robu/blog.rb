@@ -4,5 +4,5 @@ class ContentImage < ActiveRecord::Base
 
   belongs_to :owner, :polymorphic => true
   belongs_to :user
-  belongs_to :db_file
+  belongs_to :db_file, :dependent => :destroy
 end

@@ -10,10 +10,11 @@ Tags: <%= render :partial => "posts/tag", :collection => post.tags.find(:all, :o
 </div>
 <div class="post_body storycontent">
 <% unless post.content_images.empty? -%>
-<%= image_tag post.content_images.first.db_file.public_filename %>
+<%= attached_image post.content_images.last, :align => :right %>
 <% end -%>
 <%= post.body %>
 </div>
+<div class="spacer" style="clear:both">&nbsp;</div>
 <div class="comments_info"><%= link_to "#{post.comments.count} comments", post_path(post, :anchor => "comments") %></div>
 </div>
 

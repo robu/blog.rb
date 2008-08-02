@@ -80,6 +80,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     return unless @post.blog.users.include? logged_in_user
+    @post.content_images << ContentImage.new(:uploaded_data => params[:content_image]) unless params[:content_image].blank?
 
     respond_to do |format|
       if @post.update_attributes(params[:post])

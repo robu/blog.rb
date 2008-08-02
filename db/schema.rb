@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20080729145723) do
   end
 
   create_table "db_files", :force => true do |t|
-    t.binary   "data"
+    t.binary   "data",       :limit => 16777215
     t.datetime "created_at"
     t.datetime "updated_at"
   end
