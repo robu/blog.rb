@@ -21,8 +21,10 @@
   <%= f.text_area :body, :size => "50x8", :value => (@comment.content ? @comment.content.source : "") %>  
 </p>
 
-<%= get_captcha() %>
-
+<p>
+  <b>CAPTCHA (<%= link_to "What's this?", "http://recaptcha.net/captcha.html", :popup => true %>)</b><br />
+  <%= get_captcha() %>
+</p>
 <p>
   <%= f.submit "Save" %>
 </p>
