@@ -27,7 +27,11 @@ class UsersController < ApplicationController
   # GET /users/new.xml
   def new
     @user = User.new
-
+    unless logged_in?
+      # This is just to protect production environment to get spammed with new users
+      flash[:error] = "Sorry, no access"
+      redirect_to :controller => :default
+    end
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @user }
@@ -49,6 +53,11 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
     @user.password = params[:user][:password]
 
+    unless logged_in?
+      # This is just to protect production environment to get spammed with new users
+      flash[:error] = "Sorry, no access"
+      redirect_to :controller => :default
+    end
     respond_to do |format|
       if @user.save
         flash[:notice] = 'User was successfully created.'
