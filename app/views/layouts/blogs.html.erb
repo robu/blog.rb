@@ -34,6 +34,9 @@
 <% if logged_in? %>Logged in as <%= logged_in_user.username %>. (<%=link_to "Logout", :controller => :sessions, :action => "logout"%>)<% end -%>
 <%= yield :header %>
 </div> <!-- header -->
+<div id="sidebar"><div id="meni">
+<h2>Hejsan tjena!</h2>
+</div></div><!-- sidebar -->
 <div id="mainbar">
 <%= render :partial => "shared/flash_messages" %>
 
