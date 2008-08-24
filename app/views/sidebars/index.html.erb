@@ -1,3 +1,23 @@
 <h1>Sidebar for <%= h@blog.name %></h1>
 
-<p>Find me in app/views/sidebar/index.html.erb</p>
+<table>
+
+<tr>
+<th></th>
+<th>Id</th>
+<th>Type</th>
+<th>Title</th>
+<th>Content?</th>
+</tr>
+
+<% for sb in @sidebar_components -%>
+<tr>
+<td><%= sb.position %></td>
+<td><%= sb.id %></td>
+<td><%= sb.class %></td>
+<td><%=h sb.title %></td>
+<td><%= sb.content ? "yes" : "np" %></td>
+</tr>
+<% end -%>
+</table>
+
