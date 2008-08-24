@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080729145723) do
+ActiveRecord::Schema.define(:version => 20080824201319) do
 
   create_table "blogs", :force => true do |t|
     t.string   "path_name"
@@ -76,6 +76,16 @@ ActiveRecord::Schema.define(:version => 20080729145723) do
   create_table "posts_users", :id => false, :force => true do |t|
     t.integer "post_id", :limit => 11
     t.integer "user_id", :limit => 11
+  end
+
+  create_table "sidebar_components", :force => true do |t|
+    t.string   "type"
+    t.integer  "blog_id",    :limit => 11
+    t.integer  "position",   :limit => 11
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", :force => true do |t|
