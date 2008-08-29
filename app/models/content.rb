@@ -6,6 +6,10 @@ class Content < ActiveRecord::Base
   def to_s
     self.target
   end
+
+  def to_str
+    to_s
+  end
   
   def before_validation
     if self.source
