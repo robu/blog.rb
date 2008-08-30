@@ -1,5 +1,12 @@
 <% if sidebar_component.title -%>
 <h2><%=h sidebar_component.title %></h2>
 <% end -%>
+<% if sidebar_component.class.name == "SidebarComponent" -%>
 <%= sidebar_component.content -%>
+<% else -%>
+<%= 
+  render :partial => "layouts/sidebar_#{ sidebar_component.class.name.underscore }", 
+    :locals => {:sidebar_component => sidebar_component}
+%>
+<% end -%>
 
