@@ -1,0 +1,8 @@
+<div id="sidebar"><div id="meni">
+<% if logged_in? && @blog && logged_in_user.blogs.include?(@blog) -%>
+<% end -%>
+<% if @blog && @blog.sidebar_components.size > 0 -%>
+<%= render :partial => "layouts/sidebar_component", :collection => @blog.sidebar_components %>
+<% end -%>
+</div></div><!-- sidebar -->
+

@@ -6,7 +6,8 @@
 
 <% if logged_in? && @blog.users.include?(logged_in_user) -%>
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Create Post', new_post_path(:blog => @blog) %>
+<%= link_to 'Create Post', new_post_path(:blog => @blog) %> |
+<%= link_to 'Sidebar', blog_sidebars_path(@blog) %>
 <% end -%>
 
 <%= render :partial => "blogs/post", :collection => @posts %>

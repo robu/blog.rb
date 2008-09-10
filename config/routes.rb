@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :posts, :has_many => [:comments, :attachments]
-  map.resources :blogs, :has_many => [:comments, :attachments, :tags]
+  map.resources :blogs, :has_many => [:comments, :attachments, :tags, :sidebars]
 
   # The priority is based upon order of creation: first created -> highest priority.
 

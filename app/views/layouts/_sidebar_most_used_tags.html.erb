@@ -1,0 +1,4 @@
+<% sidebar_component.tags(5).each do |tag| -%>
+<div class="sidebar_tag"><%= tag %> (<%= tag.taggings.count %>)</div>
+<% end -%>
+

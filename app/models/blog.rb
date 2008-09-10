@@ -1,5 +1,6 @@
 class Blog < ActiveRecord::Base
   has_many :posts
+  has_many :sidebar_components, :order => "position"
   has_and_belongs_to_many :users, :join_table => "users_blogs"
 
   validates_format_of :path_name, :with => /\A[abcdefghijklmnopqrstuvwxyz0123456789_\-\.]+\Z/
@@ -12,6 +13,10 @@ class Blog < ActiveRecord::Base
 
   def published_posts
     self.posts.published
+  end
+
+  def latest_comments(num=5)
+    Comment.for_blog(self).latest(num)
   end
 
   def tags
