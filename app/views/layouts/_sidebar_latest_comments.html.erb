@@ -1,4 +1,4 @@
 <% sidebar_component.comments.each do |comment| -%>
-<div class="sidebar_comment"><%= comment.created_at.to_date.to_formatted_s %> <%=h comment.body_cleaned %></div>
+<div class="sidebar_comment"><%= comment.created_at.to_date.to_formatted_s %> <%=h(truncate(comment.body_cleaned)) %></div>
 <% end -%>
 
