@@ -1,7 +1,7 @@
 class MostUsedTags < SidebarComponent
   def tags(limit=0)
     tags = self.blog.tags
-    tags.sort {|t1,t2| diff = t2.taggings.count <=> t1.taggings.count; diff != 0 ? diff : t1.name <=> t2.name}
+    tags.sort {|t1,t2| t2.taggings.count <=> t1.taggings.count}
     limit <= 0 || limit > tags.size ? tags : tags[0..(limit-1)]
   end
 
