@@ -3,4 +3,5 @@ doc/api
 tmp/**/*
 *~
 vendor/gems
+/*.sql
 
